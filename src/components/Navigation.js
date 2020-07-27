@@ -3,6 +3,20 @@ import { AppBar, Toolbar, IconButton,
     Typography } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
 
 const Navigation = (props) => {
 
@@ -28,14 +42,15 @@ const Navigation = (props) => {
     if(props.user){
         listToShow = loggedInList;
     }
-
+   const classes = useStyles();
     return (
-        <AppBar position="relative" style={{ background: '#2E3B55' }}>
+        <div className={classes.root}>
+        <AppBar position="static" >
             <Toolbar>
                 {/* <IconButton color="inherit">
                     <MenuIcon />
                 </IconButton> */}
-                <Typography variant="h6" style={{ flexGrow: "1" }}>
+                <Typography variant="h6" >
                     Care Amarillo
                 </Typography>
                 <ul className="nav-list">
@@ -46,7 +61,11 @@ const Navigation = (props) => {
                 </ul>
             </Toolbar>
         </AppBar>
+        </div>
     )
+
 }
+
+//edit 
 
 export default Navigation
