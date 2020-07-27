@@ -30,20 +30,21 @@ class Home extends Component {
     
     render() { 
         return ( 
-            <div>
+            <div className="card-container">
             {this.state.shelters.map((shelter, idx) => (
+                
                 <Card key={idx} className="card">
                     <CardContent className="text-gray">
                         <span>{shelter.name.toUpperCase()}</span>
-                        <ul>
-                        <li>Shelter Name: {shelter["name"]}</li>
-                        <li>Phone: {shelter["phone"]}</li>
-                        <li>Address: {shelter["adress"]}</li>
+                        <ul >
+                        <li>{shelter["name"]}</li>
+                        {/* <li>Phone: {shelter["phone"]}</li>
+                        <li>Address: {shelter["adress"]}</li> */}
                         </ul>
                     </CardContent>
                     <Divider />
                     <CardActions style={{ color: 'mediumblue' }}>
-                        <Link to={`/shelter/${shelter.id}`}>See More Details</Link>
+                        <Link to={`/shelter/${shelter._id}`}>See More Details</Link>
                     </CardActions>
                 </Card>
             ))}

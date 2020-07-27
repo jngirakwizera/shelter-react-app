@@ -5,6 +5,7 @@ import {
   Button,
   Container
 } from '@material-ui/core'
+import {Link, Redirect} from "react-router-dom";
 
 class Login extends Component {
   
@@ -20,27 +21,29 @@ class Login extends Component {
   
   login = () => {
       console.log(`login`);
-    let credentials = {
-        email_address: this.state.username,
-        password: this.state.password
-    }
-    console.log(`credentials is ${JSON.stringify(credentials)}`);
-    fetch("http://localhost:3000/users/authenticate/", {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(credentials),
-        })
-            .then((response) => response.json())
-            .then((theData) => {
-                console.log(`The data from logging is ${JSON.stringify(theData)}`);
+      this.props.setToken(this.state);
+
+    // let credentials = {
+    //     email_address: this.state.username,
+    //     password: this.state.password
+    // }
+    // console.log(`credentials is ${JSON.stringify(credentials)}`);
+    // fetch("http://localhost:3000/users/authenticate/", {
+    //         method: 'post',
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(credentials),
+    //     })
+    //         .then((response) => response.json())
+    //         .then((theData) => {
+    //             console.log(`The data from logging is ${JSON.stringify(theData)}`);
                
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+    //         })
+    //         .catch((error) => {
+    //             console.error('Error:', error);
+    //         });
   }
 
   onChangeUsername = (e) => {
@@ -56,7 +59,7 @@ onChangePassword = (e) => {
 }
 
   render() {
-    return (
+    return !this.props.token ? (
       <div className="App">
         <Container maxWidth="sm">
           <div className="login-form" >
@@ -81,7 +84,7 @@ onChangePassword = (e) => {
           </div>
         </Container>
       </div>
-    );
+    ):  <Redirect to="/"/>;
   }
 }
 

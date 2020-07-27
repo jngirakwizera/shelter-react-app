@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  /* background-color: red; */
+}
+
+body{
+  background-color:navy;
 }
 
 .login-form {
@@ -62,4 +67,14 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.navRow{
+  display: flex;
+  flex-direction: row;
+}
+
+.login-form{
+  background-color: white;
+  padding: 5px;
 }

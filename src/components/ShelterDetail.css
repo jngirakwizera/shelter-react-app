@@ -1,0 +1,28 @@
+#shelterContainer{
+    /* background-color: black; */
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
+}
+
+#cardContainer{
+    padding: 10px;
+    margin:5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
+    
+}
+
+#cardText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    color: black;
+}
