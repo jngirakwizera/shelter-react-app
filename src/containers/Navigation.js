@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { setToken } from '../redux/actions';
+import { setToken, unsetToken } from '../redux/actions';
 
 import Navigation from '../components/Navigation';
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setToken: (submitEvent) => dispatch(setToken(submitEvent)),
+        unsetToken: (submitEvent) => dispatch(unsetToken(submitEvent)),
     }
 }
 

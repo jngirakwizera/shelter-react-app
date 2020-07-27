@@ -4,7 +4,11 @@ import { AppBar, Toolbar, IconButton,
 import MenuIcon from '@material-ui/icons/Menu'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-
+import {
+    TextField,
+    Button,
+    Container
+  } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,13 +24,20 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = (props) => {
 
+    const logout = () =>{
+       props.unsetToken(props.token);
+    }
     
     let loggedInList =    <div class="navRow"><li className="nav-list-item">
             <Link to="/createShelter">Create Shelter</Link>
         </li>
         <li className="nav-list-item">
             <Link to="/editShelter">Edit Shelter</Link>
-        </li></div>;
+        </li>
+        <li className="nav-list-item">
+            <Button id="navButton" onClick={logout}>Logout</Button>
+        </li>
+        </div>;
 
     let unauthorizedList = <div class="navRow">
                     <li className="nav-list-item">
@@ -39,7 +50,7 @@ const Navigation = (props) => {
 
     let listToShow = unauthorizedList;
 
-    if(props.user){
+    if(props.token){
         listToShow = loggedInList;
     }
    const classes = useStyles();
